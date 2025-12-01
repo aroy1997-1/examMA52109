@@ -92,7 +92,9 @@ def main(args: List[str]) -> None:
         ax.set_title(f"k = {k}" + (" (best)" if k == best_k else ""))
         ax.set_xlabel(feature_cols[0])
         ax.set_ylabel(feature_cols[1])
-    fig.colorbar(scatter, ax=axes.tolist(), label="Cluster label")
+    #fig.colorbar(scatter, ax=axes.tolist(), label="Cluster label")
+    fig.colorbar(scatter, ax=axes.ravel().tolist(), orientation='horizontal', fraction=0.05, pad=0.1)
+
     fig.suptitle("Clusterings for different k", fontsize=16)
     fig.tight_layout(rect=[0, 0, 1, 0.96])
     combined_plot_path = os.path.join(OUTPUT_DIR, f"{base}_all_k_comparison.png")
