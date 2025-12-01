@@ -7,6 +7,8 @@
 from __future__ import annotations
 
 from typing import Dict, Any, List, Optional
+from .agglomerative import agglomerative  # import to register algorithm from agglomerative.py
+
 
 import numpy as np
 import pandas as pd
@@ -87,6 +89,8 @@ def run_clustering(
         labels, centroids = kmeans(X, k=k, random_state=random_state)
     elif algorithm == "sklearn_kmeans":
         labels, centroids = sklearn_kmeans(X, k=k, random_state=random_state)
+    elif algorithm == "agglomerative":
+        labels, centroids = agglomerative(X, k=k)  # <- call to agglomerative
     else:
         raise ValueError(f"Unknown algorithm '{algorithm}'. Use 'kmeans' or 'sklearn_kmeans'.")
 
